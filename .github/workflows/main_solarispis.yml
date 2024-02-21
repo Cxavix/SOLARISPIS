@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://contpolaris.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_4a70e7e976394790bcbe63e9f73f7b6b }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_d8163876b222408ca80eaf261e65bda8 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_79feb6aa3f8b4422b50b84ec588ec0f0 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_4145938b58ef46b4b5f0bdd67b6a8fa6 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: contpolaris.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_4a70e7e976394790bcbe63e9f73f7b6b }}/hello-world:${{ github.sha }}
+        tags: contpolaris.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_79feb6aa3f8b4422b50b84ec588ec0f0 }}/hello-world:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'solarispis'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_9b0d5c0ac44c4ec7ac54c1ccd29dcbba }}
-        images: 'contpolaris.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_4a70e7e976394790bcbe63e9f73f7b6b }}/hello-world:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_d52e230aa7ed48efb0795aa5cf27113e }}
+        images: 'contpolaris.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_79feb6aa3f8b4422b50b84ec588ec0f0 }}/hello-world:${{ github.sha }}'
